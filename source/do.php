@@ -8,6 +8,8 @@ if(!defined('IN_OLDCMS')) { die('Access Denied');
 }
 
 $auth=Val('auth', 'GET');
+$act=Val('act', 'GET');
+$domain=Val('domain', 'GET');
 $db=DBConnect();
 $project=$db->FirstRow("SELECT * FROM ".Tb('project')." WHERE authCode='{$auth}'");
 if(empty($project)) { exit('Auth Err.');

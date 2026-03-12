@@ -1,7 +1,11 @@
-<div class="menu">
-	<h3>后台管理</h3>
-	<ul>
-		<li{if $do=='index'} class="active"{/if}><a href="./">管理首页</a></li>
-		<li{if $do=='module'} class="active"{/if}><a href="./index.php?do=admin_module">公共模块审核</a></li>
-	</ul>
-</div>
+            <!-- 侧边栏菜单 -->
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li{if $do=='admin_index' || $do==''} class="active"{/if}>
+                        <a href="./"><span class="glyphicon glyphicon-dashboard"></span> 管理首页</a>
+                    </li>
+                    <li{if $do=='admin_module'} class="active"{/if}>
+                        <a href="./index.php?do=admin_module"><span class="glyphicon glyphicon-th-list"></span> 公共模块审核</a>
+                    </li>
+                </ul>
+            </div>

@@ -56,9 +56,9 @@ class DB_Mysql implements IDataBase
     private $host, $username, $password, $database, $charset;
     public $linkId, $queryId, $rows = array(), $rowsNum = 0, $tbPrefix;
 
-    function __destructor()
+    function __destruct()
     {
-        Disconnect();
+        $this->Disconnect();
     }
 
     /* connect to database */

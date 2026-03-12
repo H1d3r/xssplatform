@@ -2,8 +2,8 @@
 require "./common.php";
 
 header("content-type:text/html;charset=utf-8");
-$path = $_SERVER['HTTP_REFERER'];
-if (!basename($path) == 'step1.php') {
+$path = $_SERVER['HTTP_REFERER'] ?? '';
+if (basename($path) != 'step1.php') {
     echo basename($path);
     exit('非法请求!');
 }

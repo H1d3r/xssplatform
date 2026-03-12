@@ -19,7 +19,7 @@ if(!empty($project) && !empty($url) && !empty($cookie)) {
     $existed=$db->FirstValue("SELECT COUNT(*) FROM ".Tb('keepsession')." WHERE hash='{$hash}'");
     if($existed<=0) {
         //判断用户key session的请求数量
-        $sum=$db->FirstValue("SELECT COUNT(*) FROM ".Tb('keepsession')." WHERE userId='{$project[userId]}'");
+        $sum=$db->FirstValue("SELECT COUNT(*) FROM ".Tb('keepsession')." WHERE userId='{$project['userId']}'");
         if($sum<10) {
             $sqlValues=array(
             'projectId'=>$project['id'],

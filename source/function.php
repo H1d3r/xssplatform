@@ -189,7 +189,9 @@ function UBBToHTML($str = '')
 {
     if (!empty($str)) {
         $str = preg_replace("/\[(b|i|u)\](.*?)\[\/\\1\]/is", "<$1>$2</$1>", $str);
-        $str = preg_replace("/\[code\](.*?)\[\/code]/ise", "DoCode('$1')", $str);
+        $str = preg_replace_callback("/\[code\](.*?)\[\/code]/is", function($matches) {
+            return DoCode($matches[1]);
+        }, $str);
         $str = str_replace("\n", '<br />', $str);
         $str = preg_replace(
             "/\[link\s+?href=(\'\"|&quot;)(.*?)\\1\](.*?)\[\/link\]/i",

@@ -13,7 +13,7 @@ class User
     private $db,$tbUser,$tbField,$tbUserField,$tbSession,$expiryTime=3600,$ocKey;
     function __construct()
     {
-        if(intval(EXPIRES)>0) { $expiryTime=intval(EXPIRES);
+        if(intval(EXPIRES)>0) { $this->expiryTime=intval(EXPIRES);
         }
         $this->db=DBConnect();
         $this->tbUser=$this->db->tbPrefix.'user';
@@ -120,7 +120,7 @@ class User
     function UpdateSession($newData=array())
     {
         $data=$this->db->FirstValue("SELECT data FROM ".$this->tbSession." WHERE ocKey='".$this->ocKey."'");
-        if(count($data)>0) {
+        if(!empty($data)) {
             $data=unserialize($data);
             foreach($newData as $key=>$value){
                 $data[$key]=$value;
